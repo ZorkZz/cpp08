@@ -5,18 +5,7 @@
 #include <algorithm>
 
 template <typename T>
-void	easyfind(T type, int nb)
-{
-	typename T::iterator	iter;
+void	easyfind(T type, int nb);
 
-	iter = std::find(type.begin(), type.end(), nb);
-	if (iter != type.end())
-	{
-		std::cout << "Element: " << nb << " is on index " << iter - type.begin() << std::endl;
-	}
-	else
-		throw std::runtime_error("404 not found");
-}
-
-
+#include "easyfind.tpp"
 #endif
