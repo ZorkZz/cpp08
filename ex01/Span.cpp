@@ -10,12 +10,13 @@ Span::~Span(void)
 Span::Span(unsigned int size): _size(size)
 {}
 
-Span::Span(Span &span)
+Span::Span(const Span &span)
 {
-	span = *this;
+	if (this != &span)
+		*this = span;
 }
 
-Span	&Span::operator=(Span const &span)
+Span	&Span::operator=(const Span &span)
 {
 	if (this != &span)
 	{
