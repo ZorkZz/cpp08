@@ -39,13 +39,13 @@ int	Span::shortestSpan()
 
 	if (_size < 2)
 		return(0);
-	span = abs(_numbers[0] - _numbers[1]);
+	span = std::abs(_numbers[0] - _numbers[1]);
 	for (size_t i = 0; i < _size; i++)
 	{
 		for (size_t j = 0; j < _size; j++)
 		{
-			if (abs(_numbers[i] - _numbers[j]) < span && i != j)
-				span = abs(_numbers[i] - _numbers[j]);
+			if (std::abs(_numbers[i] - _numbers[j]) < span && i != j)
+				span = std::abs(_numbers[i] - _numbers[j]);
 		}
 	}
 	return (span);
@@ -57,16 +57,24 @@ int	Span::longestSpan()
 
 	if (_size < 2)
 		return(0);
-	span = abs(_numbers[1] - _numbers[0]);
+	span = std::abs(_numbers[1] - _numbers[0]);
 	for (size_t i = 0; i < _size; i++)
 	{
 		for (size_t j = 0; j < _size; j++)
 		{
-			if (abs(_numbers[i] - _numbers[j]) > span && i != j)
-				span = abs(_numbers[i] - _numbers[j]);
+			if (std::abs(_numbers[i] - _numbers[j]) > span && i != j)
+				span = std::abs(_numbers[i] - _numbers[j]);
 		}
 	}
 	return (span);
+}
+
+void	Span::addNumbresList(std::vector<int> list)
+{
+	if (_numbers.size() + list.size() > _size)
+		throw (arrayFull());
+	for(std::vector<int>::iterator it = list.begin(); it != list.end(); it++)
+		_numbers.push_back(*it);
 }
 
 char const	*Span::arrayFull::what() const throw(){return ("Span::exception: Array full");}

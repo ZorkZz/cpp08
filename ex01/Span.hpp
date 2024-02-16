@@ -5,6 +5,7 @@
 #include <vector>
 #include <cmath>
 #include <exception>
+#include <algorithm>
 
 class Span
 {
@@ -15,6 +16,7 @@ class Span
 		Span(const Span &span);
 		Span	&operator=(const Span &span);
 		void	addNumber(int number);
+		void	addNumbresList(std::vector<int> list);
 		int		shortestSpan();
 		int		longestSpan();
 		class arrayFull: public std::exception
